@@ -1,23 +1,65 @@
-let eventoSelecionado = null; // objeto do evento clicado (para editar/apagar)
-let chaveSelecionada = null; // chave "YYYY-M-D" do dia selecionado
-let diaSelecionado = null; // número do dia selecionado (apenas para exibir)
-const SENHA_ADMIN = "050215"; // senha admin (mude se quiser)
+const SENHA_ADMIN = "050215";
 let modoAdmin = false;
+
 let dataAtual = new Date();
 let eventos = {};
+
+let diaSelecionado = null;
 let tipoSelecionado = null;
-const inputNomeEvento = document.getElementById("nome-evento");
-const btnSalvarEvento = document.getElementById("salvar-evento");
-btnSalvarEvento.onclick = async () => {
-  const nome = inputNomeEvento.value.trim();
 
-  if (!nome) {
-    alert("Digite o nome do evento");
-    return;
+// DOM
+const calendario = document.getElementById("calendario");
+const mesAno = document.getElementById("mes-ano");
+const btnAnterior = document.getElementById("anterior");
+const btnProximo = document.getElementById("proximo");
+
+const overlay = document.getElementById("overlay");
+const btnFechar = document.getElementById("fechar-modal");
+
+const inputSenha = document.getElementById("senha-admin");
+const btnEntrar = document.getElementById("btn-entrar");
+const cadeado = document.getElementById("cadeado");
+
+const inputNome = document.getElementById("nome-evento");
+const btnSalvar = document.getElementById("salvar-evento");
+const botoesTipo = document.querySelectorAll(".tipo-btn");
+
+const meses = [
+  "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+  "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
+];
+
+// LOGIN
+btnEntrar.onclick = () => {
+  if (inputSenha.value === SENHA_ADMIN) {
+    modoAdmin = true;
+    cadeado.innerText = "🔓";
+    alert("Modo administrador ativado");
+  } else {
+    alert("Senha incorreta");
   }
+  inputSenha.value = "";
+};
 
-  if (!tipoSelecionado) {
-    alert("Escolha o tipo do evento");
+// BOTÕES DE TIPO
+botoesTipo.forEach(btn => {
+  btn.onclick = () => {
+    botoesTipo.forEach(b => b.classList.remove("ativo"));
+    btn.classList.add("ativo");
+    tipoSelecionado = btn.dataset.tipo;
+  };
+});
+
+// FECHAR POPUP
+btnFechar.onclick = () => {
+  overlay.style.display = "none";
+};
+
+// SALVAR EVENTO
+btnSalvar.onclick = async () => {
+  const nome = inputNome.value.trim();
+  if (!nome || !tipoSelecionado) {
+    alert("Preencha tudo");
     return;
   }
 
@@ -31,217 +73,28 @@ btnSalvarEvento.onclick = async () => {
     chave
   });
 
-  // 🔄 resetar tudo
-  inputNomeEvento.value = "";
+  inputNome.value = "";
   tipoSelecionado = null;
-  botoesTipo.forEach((b) => b.classList.remove("ativo"));
+  botoesTipo.forEach(b => b.classList.remove("ativo"));
+  overlay.style.display = "none";
 
-  fecharOverlay();
   carregarEventos();
 };
 
-const botoesTipo = document.querySelectorAll(".tipo-btn");
-botoesTipo.forEach((botao) => {
-  botao.onclick = () => {
-    botoesTipo.forEach((b) => b.classList.remove("ativo"));
-    botao.classList.add("ativo");
-    tipoSelecionado = botao.dataset.tipo;
-  };
-});
-
-
-  botao.addEventListener("click", () => {
-    // remove seleção de todos
-   
-
-    // marca o clicado
-    botao.classList.add("ativo");
-
-    // guarda o tipo escolhido
-   
-
-
-
-
-  botao.addEventListener("click", () => {
-    
-    botao.classList.add("ativo");
-    
-  });
-});
-
-// ----- ELEMENTOS DO DOM -----
-const inputSenha = document.getElementById("senha-admin");
-const btnEntrar = document.getElementById("btn-entrar");
-const cadeado = document.getElementById("cadeado");
-
-const calendario = document.getElementById("calendario");
-const mesAno = document.getElementById("mes-ano");
-const btnAnterior = document.getElementById("anterior");
-const btnProximo = document.getElementById("proximo");
-
-const overlay = document.getElementById("overlay");
-const btnFechar = document.getElementById("fechar-modal");
-const modalTitulo = document.getElementById("modal-titulo");
-const modalDia = document.getElementById("modal-dia");
-const acoesAdmin = document.getElementById("acoes-admin");
-const btnEditar = document.getElementById("btn-editar");
-const btnApagar = document.getElementById("btn-apagar");
-
-
-  botao.onclick = () => {
-  botao.classList.add("ativo");
-   
-  };
-});
-
-
-// ----- DADOS E ESTADO -----
-let dataAtual = new Date();
-let eventos = {}
-
-
+// FIREBASE
 async function carregarEventos() {
   eventos = {};
-
-  const snapshot = await db.collection("eventos").get();
-  snapshot.forEach((doc) => {
+  const snap = await db.collection("eventos").get();
+  snap.forEach(doc => {
     const ev = doc.data();
     if (!eventos[ev.chave]) eventos[ev.chave] = [];
-    eventos[ev.chave].push({ ...ev, id: doc.id });
+    eventos[ev.chave].push(ev);
   });
-
   renderizarCalendario();
 }
 
-const meses = [
-  "Janeiro",
-  "Fevereiro",
-  "Março",
-  "Abril",
-  "Maio",
-  "Junho",
-  "Julho",
-  "Agosto",
-  "Setembro",
-  "Outubro",
-  "Novembro",
-  "Dezembro",
-];
-
-// ----- LOGIN ADMIN -----
-if (btnEntrar) {
-  btnEntrar.onclick = () => {
-    if (inputSenha.value === SENHA_ADMIN) {
-      modoAdmin = true;
-      cadeado.innerText = "🔓";
-      inputSenha.value = "";
-      alert("Modo administrador ativado!");
-      renderizarCalendario();
-    } else {
-      alert("Senha incorreta!");
-    }
-  };
-}
-
-// ----- FECHAR MODAL -----
-if (btnFechar) {
-  btnFechar.onclick = () => {
-    fecharOverlay();
-  };
-}
-function fecharOverlay() {
-  overlay.style.display = "none";
-  eventoSelecionado = null;
-  chaveSelecionada = null;
-  diaSelecionado = null;
-}
-
-// ----- ADICIONAR EVENTO (usamos prompt para simplicidade) -----
-async function adicionarEvento(dia) {
-
-  if (!nome) return;
-
- 
-
-
-  const ano = dataAtual.getFullYear();
-  const mes = dataAtual.getMonth();
-  const chave = `${ano}-${mes}-${dia}`;
-
-  await db.collection("eventos").add({
-    nome,
-   
-    chave
-  });
-
-  carregarEventos(); // recarrega do Firebase
-}
-// 🔄 resetar seleção
-
-
-// ----- EDITAR EVENTO -----
-if (btnEditar) {
-  btnEditar.onclick = () => {
-  if (!eventoSelecionado) return;
-
-  const novoNome = prompt(
-    "Editar nome do evento:",
-    eventoSelecionado.nome
-  );
-
-  if (novoNome === null || novoNome.trim() === "") return;
-
-  db.collection("eventos")
-    .doc(eventoSelecionado.id)
-    .update({
-      nome: novoNome
-    })
-    .then(() => {
-      fecharOverlay();
-      carregarEventos();
-    });
-};
-
-
-    if (!novoNome) return;
-
-    try {
-      await db
-        .collection("eventos")
-        .doc(eventoSelecionado.id)
-        .update({
-          nome: novoNome,
-        });
-
-      fecharOverlay();
-      carregarEventos(); // recarrega do Firebase
-    } catch (erro) {
-      alert("Erro ao editar evento");
-      console.error(erro);
-    }
-  };
-}
-
-
-// ----- APAGAR EVENTO -----
-if (btnApagar) {
-  btnApagar.onclick = async () => {
-    if (!eventoSelecionado) return;
-
-    const confirmar = confirm("Tem certeza que deseja apagar?");
-    if (!confirmar) return;
-
-    await db.collection("eventos").doc(eventoSelecionado.id).delete();
-
-    fecharOverlay();
-    carregarEventos();
-  };
-}
-
-// ----- RENDERIZAR CALENDÁRIO -----
+// CALENDÁRIO
 function renderizarCalendario() {
-  if (!calendario) return;
   calendario.innerHTML = "";
 
   const ano = dataAtual.getFullYear();
@@ -251,72 +104,39 @@ function renderizarCalendario() {
   const diasNoMes = new Date(ano, mes + 1, 0).getDate();
 
   for (let dia = 1; dia <= diasNoMes; dia++) {
-    const divDia = document.createElement("div");
-    divDia.className = "dia";
+    const div = document.createElement("div");
+    div.className = "dia";
+    div.innerHTML = `<strong>${dia}</strong>`;
 
     const chave = `${ano}-${mes}-${dia}`;
-
-   if (
-  eventos[chave] &&
-  eventos[chave].length > 0 &&
- 
-
-
-    divDia.innerHTML = `<strong>${dia}</strong>`;
-
-    // Se houver eventos naquele dia, renderiza cada um
     if (eventos[chave]) {
-      eventos[chave].forEach((evento) => {
-  const ev = document.createElement("div");
-  
-  ev.innerText = evento.nome;
-
-
-        // clicar no evento abre o modal com opções
-        ev.onclick = (e) => {
-          e.stopPropagation(); // evita disparar o clique do próprio dia
-          eventoSelecionado = evento;
-          chaveSelecionada = chave;
-          diaSelecionado = dia;
-
-          modalTitulo.innerText = evento.nome;
-          modalDia.innerText = `${dia} de ${meses[mes]}`;
-          overlay.style.display = "flex";
-
-          // mostra ações apenas se for admin
-          acoesAdmin.style.display = modoAdmin ? "flex" : "none";
-        };
-
-        divDia.appendChild(ev);
+      eventos[chave].forEach(ev => {
+        const e = document.createElement("div");
+        e.className = `evento ${ev.tipo}`;
+        e.innerText = ev.nome;
+        div.appendChild(e);
       });
     }
 
-    // clicar no dia cria evento (somente admin)
-    divDia.onclick = () => {
-  if (!modoAdmin) {
-    alert("Área restrita. Entre como administrador.");
-    return;
-  }
+    div.onclick = () => {
+      if (!modoAdmin) return alert("Área restrita");
+      diaSelecionado = dia;
+      overlay.style.display = "flex";
+    };
 
-  diaSelecionado = dia;
-  overlay.style.display = "flex";
+    calendario.appendChild(div);
+  }
+}
+
+// NAVEGAÇÃO
+btnAnterior.onclick = () => {
+  dataAtual.setMonth(dataAtual.getMonth() - 1);
+  carregarEventos();
 };
 
+btnProximo.onclick = () => {
+  dataAtual.setMonth(dataAtual.getMonth() + 1);
+  carregarEventos();
+};
 
-// ----- NAVEGAÇÃO DE MESES -----
-if (btnAnterior) {
-  btnAnterior.onclick = () => {
-    dataAtual.setMonth(dataAtual.getMonth() - 1);
-    renderizarCalendario();
-  };
-}
-if (btnProximo) {
-  btnProximo.onclick = () => {
-    dataAtual.setMonth(dataAtual.getMonth() + 1);
-    renderizarCalendario();
-  };
-}
-
-// ----- INICIALIZAÇÃO -----
 carregarEventos();
-
