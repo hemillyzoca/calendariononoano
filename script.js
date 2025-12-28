@@ -75,9 +75,10 @@ function adicionarEvento(dia) {
   if (!nome) return;
 
   // tipo simples (você pode padronizar em 'prova','feriado','evento', etc)
-  const tipo =
-    prompt("Tipo do evento (ex: prova, feriado, evento, outro):", "outro") ||
-    "outro";
+ const tipo = prompt(
+  "Tipo do evento: prova, trote, comemoracao ou competicao",
+  "prova"
+);
 
   const ano = dataAtual.getFullYear();
   const mes = dataAtual.getMonth();
