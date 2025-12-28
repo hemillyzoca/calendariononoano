@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Agenda</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-   
-    <h1>Calendário nono ano</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário nono ano</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <div class="admin-box">
-      <div class="admin-header">
-        <span id="cadeado">🔒</span>
-        <strong>Área Administrativa</strong>
-      </div>
+<h1>Calendário nono ano</h1>
 
-      <input type="password" id="senha-admin" placeholder="Digite a senha" />
+<div class="admin-box">
+  <div class="admin-header">
+    <span id="cadeado">🔒</span>
+    <strong>Área Administrativa</strong>
+  </div>
 
-      <button id="btn-entrar">Entrar</button>
-    </div>
+  <input type="password" id="senha-admin" placeholder="Digite a senha">
+  <button id="btn-entrar">Entrar</button>
+</div>
 
-    <!-- TOPO DOS MESES -->
-    <div class="topo">
-      <button id="anterior">◀</button>
-      <h2 id="mes-ano"></h2>
-      <button id="proximo">▶</button>
-    </div>
+<div class="topo">
+  <button id="anterior">◀</button>
+  <h2 id="mes-ano"></h2>
+  <button id="proximo">▶</button>
+</div>
 
-    <!-- CALENDÁRIO -->
-    <div id="calendario" class="calendario"></div>
+<div id="calendario" class="calendario"></div>
 
-    <!-- MODAL -->
-    <div id="overlay">
+<!-- POPUP -->
+<div id="overlay">
   <div class="modal">
     <span id="fechar-modal">×</span>
 
     <h3>Novo evento</h3>
 
-    <input
-      type="text"
-      id="nome-evento"
-      placeholder="Nome do evento"
-    />
+    <input id="nome-evento" type="text" placeholder="Nome do evento">
 
     <p>Tipo do evento:</p>
     <div class="tipos-evento">
@@ -56,36 +49,21 @@
   </div>
 </div>
 
-    <!-- Firebase -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
 <script>
   const firebaseConfig = {
-    apiKey: "AIzaSyAlPHkwXcg_yF4n8bUtooxkwuZe2N_K44A",
+    apiKey: "SUA_API_KEY",
     authDomain: "calendariononoano.firebaseapp.com",
-    projectId: "calendariononoano",
-    storageBucket: "calendariononoano.firebasestorage.app",
-    messagingSenderId: "588493113640",
-    appId: "1:588493113640:web:04f81f5313af6f6e28281d"
+    projectId: "calendariononoano"
   };
 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
 
-    <script src="script.js"></script>
- 
-  
-
-    <input id="nome-evento" type="text" placeholder="Nome do evento">
-
-    <div class="acoes">
-      <button id="cancelar">Cancelar</button>
-      <button id="salvar-evento">Salvar</button>
-    </div>
-  </div>
-</div>
-
-  </body>
+<script src="script.js"></script>
+</body>
 </html>
