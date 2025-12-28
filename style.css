@@ -24,6 +24,7 @@ h1 {
   font-size: 14px;
 }
 
+
 .evento {
   margin-top: 4px;
   padding: 4px;
@@ -31,27 +32,9 @@ h1 {
   font-size: 12px;
   background: transparent;
   color: #333;
+  border: none;
 }
 
-/* PROVA – azul */
-.evento.prova {
-  border-left: 4px solid #89b7c2;
-}
-
-/* TROTE – vermelho */
-.evento.trote {
-  border-left: 4px solid #fcf2b3;
-}
-
-/* COMEMORAÇÃO – rosa */
-.evento.comemoracao {
-  border-left: 4px solid #f49aa2;
-}
-
-/* COMPETIÇÃO – verde */
-.evento.competicao {
-  border-left: 4px solid #a8bf8a;
-}
 
 .calendario {
   display: grid;
