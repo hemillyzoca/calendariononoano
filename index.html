@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Minha Agenda</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Calendário nono ano</h1>
+
+    <div class="admin-box">
+      <div class="admin-header">
+        <span id="cadeado">🔒</span>
+        <strong>Área Administrativa</strong>
+      </div>
+
+      <input type="password" id="senha-admin" placeholder="Digite a senha" />
+
+      <button id="btn-entrar">Entrar</button>
+    </div>
+
+    <!-- TOPO DOS MESES -->
+    <div class="topo">
+      <button id="anterior">◀</button>
+      <h2 id="mes-ano"></h2>
+      <button id="proximo">▶</button>
+    </div>
+
+    <!-- CALENDÁRIO -->
+    <div id="calendario" class="calendario"></div>
+
+    <!-- MODAL -->
+    <div id="overlay">
+      <div class="modal">
+        <span id="fechar-modal">×</span>
+
+        <h2 id="modal-titulo"></h2>
+        <p id="modal-dia"></p>
+
+        <div id="acoes-admin" style="display: none">
+          <button id="btn-editar">Editar</button>
+          <button id="btn-apagar">Apagar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
