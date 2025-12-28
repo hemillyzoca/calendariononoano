@@ -153,28 +153,27 @@ botoesTipo.forEach((b) => b.classList.remove("ativo"));
 
 // ----- EDITAR EVENTO -----
 if (btnEditar) {
-  btnEditar.onclick = async () => {
-    if (!eventoSelecionado) return;
+  btnEditar.onclick = () => {
+  if (!eventoSelecionado) return;
 
-  if (!tipoSelecionado) {
-  alert("Escolha o tipo do evento antes");
-  return;
-}
+  const novoNome = prompt(
+    "Editar nome do evento:",
+    eventoSelecionado.nome
+  );
 
-    const novoNome = prompt(
-  "Editar nome do evento:",
-  eventoSelecionado.nome
-);
+  if (novoNome === null || novoNome.trim() === "") return;
 
-if (novoNome === null || novoNome.trim() === "") return;
+  db.collection("eventos")
+    .doc(eventoSelecionado.id)
+    .update({
+      nome: novoNome
+    })
+    .then(() => {
+      fecharOverlay();
+      carregarEventos();
+    });
+};
 
-// 🔥 AQUI É O UPDATE (que não existia)
-db.collection("eventos").doc(eventoSelecionado.id).update({
-  nome: novoNome,
-  tipo: tipoSelecionado || eventoSelecionado.tipo
-}).then(() => {
-  carregarEventos();
-});
 
     if (!novoNome) return;
 
