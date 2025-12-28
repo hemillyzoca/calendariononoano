@@ -26,9 +26,11 @@ h1 {
 
 .evento {
   margin-top: 4px;
-  padding: 2px;
-  font-size: 12px;
+  padding: 4px;
   border-radius: 6px;
+  font-size: 12px;
+  background: transparent;
+  color: #333;
 }
 
 /* PROVA – azul */
@@ -69,12 +71,6 @@ h1 {
   overflow: hidden;
 }
 
-.evento {
-  margin-top: 5px;
-  padding: 4px;
-  border-radius: 6px;
-  font-size: 12px;
-}
 /* POPUP */
 .overlay {
   position: fixed;
