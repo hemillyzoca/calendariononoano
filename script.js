@@ -109,14 +109,19 @@ function renderizarCalendario() {
     div.innerHTML = `<strong>${dia}</strong>`;
 
     const chave = `${ano}-${mes}-${dia}`;
-    if (eventos[chave]) {
-      eventos[chave].forEach(ev => {
-        const e = document.createElement("div");
-        e.className = `evento ${ev.tipo}`;
-        e.innerText = ev.nome;
-        div.appendChild(e);
-      });
-    }
+   if (eventos[chave]) {
+
+  // pinta a lateral do dia com o tipo do PRIMEIRO evento
+  div.classList.add(eventos[chave][0].tipo);
+
+  eventos[chave].forEach(ev => {
+    const e = document.createElement("div");
+    e.className = `evento ${ev.tipo}`;
+    e.innerText = ev.nome;
+    div.appendChild(e);
+  });
+}
+
 
     div.onclick = () => {
       if (!modoAdmin) return alert("Área restrita");
