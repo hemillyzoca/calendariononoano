@@ -1,3 +1,13 @@
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 6px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -242,6 +252,7 @@ body {
   background: transparent;
 }
 
+
 @media (max-width: 600px) {
   h1 {
     font-size: 20px;
@@ -253,16 +264,7 @@ body {
     padding: 14px;
   }
 
-  .calendario {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  max-width: 100%;
-  margin: auto;
-  padding: 0 6px;
-}
 
-  
   .evento {
     font-size: 10px;
     padding: 2px 4px;
@@ -282,3 +284,4 @@ body {
     font-size: 11px;
   }
 }
+
