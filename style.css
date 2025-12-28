@@ -44,15 +44,6 @@ h1 {
   margin: auto;
 }
 
-.dia {
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  min-height: 80px; /* tamanho original */
-  position: relative;
-  border: 1px solid #ddd;
-  overflow: hidden;
-}
 
 /* POPUP */
 .overlay {
@@ -245,6 +236,26 @@ body {
   }
 }
 
+.dia {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  min-height: 80px;
+  position: relative;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.dia::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: transparent;
+}
+
 @media (max-width: 600px) {
   h1 {
     font-size: 20px;
@@ -261,12 +272,7 @@ body {
     padding: 4px;
   }
 
-  .dia {
-    min-height: 70px;
-    padding: 4px;
-    font-size: 11px;
-  }
-
+  
   .evento {
     font-size: 10px;
     padding: 2px 4px;
