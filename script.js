@@ -1,35 +1,29 @@
-let dataSelecionada = null;
-let tipoSelecionado_TESTE = null;
-
-const popup = document.getElementById("popup-evento");
-
 let eventoSelecionado = null; // objeto do evento clicado (para editar/apagar)
 let chaveSelecionada = null; // chave "YYYY-M-D" do dia selecionado
 let diaSelecionado = null; // número do dia selecionado (apenas para exibir)
 const SENHA_ADMIN = "050215"; // senha admin (mude se quiser)
 let modoAdmin = false;
-const botoesTipo = document.querySelectorAll(".btn-tipo");
+let dataAtual = new Date();
+let eventos = {};
 
-botoesTipo.forEach(botao => {
+
   botao.addEventListener("click", () => {
     // remove seleção de todos
-    botoesTipo.forEach(b => b.classList.remove("ativo"));
+   
 
     // marca o clicado
     botao.classList.add("ativo");
 
     // guarda o tipo escolhido
-    tipoSelecionado = botao.textContent;
-  });
-});
+   
 
-const botoesTipo = document.querySelectorAll(".btn-tipo");
 
-botoesTipo.forEach(botao => {
+
+
   botao.addEventListener("click", () => {
-    botoesTipo.forEach(b => b.classList.remove("ativo"));
+    
     botao.classList.add("ativo");
-    tipoSelecionado = botao.textContent;
+    
   });
 });
 
@@ -50,13 +44,11 @@ const modalDia = document.getElementById("modal-dia");
 const acoesAdmin = document.getElementById("acoes-admin");
 const btnEditar = document.getElementById("btn-editar");
 const btnApagar = document.getElementById("btn-apagar");
-const botoesTipo = document.querySelectorAll(".tipo-btn");
 
-botoesTipo.forEach((botao) => {
+
   botao.onclick = () => {
-    botoesTipo.forEach((b) => b.classList.remove("ativo"));
-    botao.classList.add("ativo");
-    tipoSelecionado = botao.dataset.tipo;
+  botao.classList.add("ativo");
+   
   };
 });
 
@@ -124,15 +116,11 @@ function fecharOverlay() {
 
 // ----- ADICIONAR EVENTO (usamos prompt para simplicidade) -----
 async function adicionarEvento(dia) {
-dataSelecionada = chaveData;
-popup.classList.remove("hidden");
+
   if (!nome) return;
 
-  if (!tipoSelecionado) {
-  alert("Escolha o tipo do evento");
-  return;
-}
-const tipo = tipoSelecionado;
+ 
+
 
   const ano = dataAtual.getFullYear();
   const mes = dataAtual.getMonth();
@@ -140,15 +128,14 @@ const tipo = tipoSelecionado;
 
   await db.collection("eventos").add({
     nome,
-    tipo,
+   
     chave
   });
 
   carregarEventos(); // recarrega do Firebase
 }
 // 🔄 resetar seleção
-tipoSelecionado = null;
-botoesTipo.forEach((b) => b.classList.remove("ativo"));
+
 
 // ----- EDITAR EVENTO -----
 if (btnEditar) {
@@ -229,10 +216,7 @@ function renderizarCalendario() {
    if (
   eventos[chave] &&
   eventos[chave].length > 0 &&
-  eventos[chave][0].tipo
-) {
-  divDia.classList.add(eventos[chave][0].tipo);
-}
+ 
 
 
     divDia.innerHTML = `<strong>${dia}</strong>`;
@@ -241,8 +225,7 @@ function renderizarCalendario() {
     if (eventos[chave]) {
       eventos[chave].forEach((evento) => {
   const ev = document.createElement("div");
-  ev.className = `evento ${evento.tipo}`;
-  divDia.classList.add(evento.tipo);
+  
   ev.innerText = evento.nome;
 
 
