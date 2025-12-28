@@ -9,6 +9,30 @@ let chaveSelecionada = null; // chave "YYYY-M-D" do dia selecionado
 let diaSelecionado = null; // número do dia selecionado (apenas para exibir)
 const SENHA_ADMIN = "050215"; // senha admin (mude se quiser)
 let modoAdmin = false;
+const botoesTipo = document.querySelectorAll(".btn-tipo");
+
+botoesTipo.forEach(botao => {
+  botao.addEventListener("click", () => {
+    // remove seleção de todos
+    botoesTipo.forEach(b => b.classList.remove("ativo"));
+
+    // marca o clicado
+    botao.classList.add("ativo");
+
+    // guarda o tipo escolhido
+    tipoSelecionado = botao.textContent;
+  });
+});
+
+const botoesTipo = document.querySelectorAll(".btn-tipo");
+
+botoesTipo.forEach(botao => {
+  botao.addEventListener("click", () => {
+    botoesTipo.forEach(b => b.classList.remove("ativo"));
+    botao.classList.add("ativo");
+    tipoSelecionado = botao.textContent;
+  });
+});
 
 // ----- ELEMENTOS DO DOM -----
 const inputSenha = document.getElementById("senha-admin");
@@ -132,10 +156,26 @@ if (btnEditar) {
   btnEditar.onclick = async () => {
     if (!eventoSelecionado) return;
 
+  if (!tipoSelecionado) {
+  alert("Escolha o tipo do evento antes");
+  return;
+}
+
     const novoNome = prompt(
-      "Editar nome do evento:",
-      eventoSelecionado.nome
-    );
+  "Editar nome do evento:",
+  eventoSelecionado.nome
+);
+
+if (novoNome === null || novoNome.trim() === "") return;
+
+// 🔥 AQUI É O UPDATE (que não existia)
+db.collection("eventos").doc(eventoSelecionado.id).update({
+  nome: novoNome,
+  tipo: tipoSelecionado || eventoSelecionado.tipo
+}).then(() => {
+  carregarEventos();
+});
+
     if (!novoNome) return;
 
     try {
