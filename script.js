@@ -108,33 +108,38 @@ async function adicionarEvento(dia) {
 
 // ----- EDITAR EVENTO -----
 if (btnEditar) {
-  btnEditar.onclick = () => {
-    if (!eventoSelecionado || !chaveSelecionada) return;
-    const novoNome = prompt("Editar nome do evento:", eventoSelecionado.nome);
+  btnEditar.onclick = async () => {
+    if (!eventoSelecionado) return;
+
+    const novoNome = prompt(
+      "Editar nome do evento:",
+      eventoSelecionado.nome
+    );
     if (!novoNome) return;
 
-    // atualiza o objeto direto (mais simples)
-    eventoSelecionado.nome = novoNome;
+    await db.collection("eventos").doc(eventoSelecionado.id).update({
+      nome: novoNome,
+    });
 
-
-    
+    fecharOverlay();
+    carregarEventos();
+  };
+}
 
 // ----- APAGAR EVENTO -----
 if (btnApagar) {
-  btnApagar.onclick = () => {
-    if (!eventoSelecionado || !chaveSelecionada) return;
+  btnApagar.onclick = async () => {
+    if (!eventoSelecionado) return;
 
-    // filtra o evento selecionado fora da lista
-    eventos[chaveSelecionada] = eventos[chaveSelecionada].filter(
-      (e) => e !== eventoSelecionado
-    );
+    const confirmar = confirm("Tem certeza que deseja apagar?");
+    if (!confirmar) return;
 
-    // se ficou vazio, remove a chave
-    if (eventos[chaveSelecionada].length === 0) {
-      delete eventos[chaveSelecionada];
-    }
+    await db.collection("eventos").doc(eventoSelecionado.id).delete();
 
-    
+    fecharOverlay();
+    carregarEventos();
+  };
+}
 
 // ----- RENDERIZAR CALENDÁRIO -----
 function renderizarCalendario() {
