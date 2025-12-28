@@ -24,7 +24,8 @@ const btnApagar = document.getElementById("btn-apagar");
 
 // ----- DADOS E ESTADO -----
 let dataAtual = new Date();
-let eventos = JSON.parse(localStorage.getItem("eventos")) || {}; // { "2026-1-15": [ {nome, tipo}, ... ] }
+let eventos = {}
+
 
 async function carregarEventos() {
   eventos = {};
@@ -83,25 +84,26 @@ function fecharOverlay() {
 }
 
 // ----- ADICIONAR EVENTO (usamos prompt para simplicidade) -----
-function adicionarEvento(dia) {
+async function adicionarEvento(dia) {
   const nome = prompt("Nome do evento:");
   if (!nome) return;
 
-  // tipo simples (você pode padronizar em 'prova','feriado','evento', etc)
- const tipo = prompt(
-  "Tipo do evento: prova, trote, comemoracao ou competicao",
-  "prova"
-);
+  const tipo = prompt(
+    "Tipo do evento: prova, trote, comemoracao ou competicao",
+    "prova"
+  );
 
   const ano = dataAtual.getFullYear();
   const mes = dataAtual.getMonth();
   const chave = `${ano}-${mes}-${dia}`;
 
-  if (!eventos[chave]) eventos[chave] = [];
-  eventos[chave].push({ nome, tipo });
+  await db.collection("eventos").add({
+    nome,
+    tipo,
+    chave
+  });
 
-  localStorage.setItem("eventos", JSON.stringify(eventos));
-  renderizarCalendario();
+  carregarEventos(); // recarrega do Firebase
 }
 
 // ----- EDITAR EVENTO -----
@@ -114,12 +116,8 @@ if (btnEditar) {
     // atualiza o objeto direto (mais simples)
     eventoSelecionado.nome = novoNome;
 
-    // salva no storage
-    localStorage.setItem("eventos", JSON.stringify(eventos));
-    fecharOverlay();
-    renderizarCalendario();
-  };
-}
+
+    
 
 // ----- APAGAR EVENTO -----
 if (btnApagar) {
@@ -136,12 +134,7 @@ if (btnApagar) {
       delete eventos[chaveSelecionada];
     }
 
-    localStorage.setItem("eventos", JSON.stringify(eventos));
-
-    fecharOverlay();
-    renderizarCalendario();
-  };
-}
+    
 
 // ----- RENDERIZAR CALENDÁRIO -----
 function renderizarCalendario() {
