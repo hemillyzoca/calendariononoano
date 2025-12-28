@@ -1,3 +1,4 @@
+let tipoSelecionado = null;
 let eventoSelecionado = null; // objeto do evento clicado (para editar/apagar)
 let chaveSelecionada = null; // chave "YYYY-M-D" do dia selecionado
 let diaSelecionado = null; // número do dia selecionado (apenas para exibir)
@@ -21,6 +22,15 @@ const modalDia = document.getElementById("modal-dia");
 const acoesAdmin = document.getElementById("acoes-admin");
 const btnEditar = document.getElementById("btn-editar");
 const btnApagar = document.getElementById("btn-apagar");
+const botoesTipo = document.querySelectorAll(".tipo-btn");
+
+botoesTipo.forEach((btn) => {
+  btn.onclick = () => {
+    botoesTipo.forEach((b) => b.classList.remove("ativo"));
+    btn.classList.add("ativo");
+    tipoSelecionado = btn.dataset.tipo;
+  };
+});
 
 // ----- DADOS E ESTADO -----
 let dataAtual = new Date();
@@ -88,10 +98,11 @@ async function adicionarEvento(dia) {
   const nome = prompt("Nome do evento:");
   if (!nome) return;
 
-  const tipo = prompt(
-    "Tipo do evento: prova, trote, comemoracao ou competicao",
-    "prova"
-  );
+  if (!tipoSelecionado) {
+  alert("Escolha o tipo do evento");
+  return;
+}
+const tipo = tipoSelecionado;
 
   const ano = dataAtual.getFullYear();
   const mes = dataAtual.getMonth();
