@@ -5,6 +5,49 @@ const SENHA_ADMIN = "050215"; // senha admin (mude se quiser)
 let modoAdmin = false;
 let dataAtual = new Date();
 let eventos = {};
+let tipoSelecionado = null;
+const inputNomeEvento = document.getElementById("nome-evento");
+const btnSalvarEvento = document.getElementById("salvar-evento");
+btnSalvarEvento.onclick = async () => {
+  const nome = inputNomeEvento.value.trim();
+
+  if (!nome) {
+    alert("Digite o nome do evento");
+    return;
+  }
+
+  if (!tipoSelecionado) {
+    alert("Escolha o tipo do evento");
+    return;
+  }
+
+  const ano = dataAtual.getFullYear();
+  const mes = dataAtual.getMonth();
+  const chave = `${ano}-${mes}-${diaSelecionado}`;
+
+  await db.collection("eventos").add({
+    nome,
+    tipo: tipoSelecionado,
+    chave
+  });
+
+  // 🔄 resetar tudo
+  inputNomeEvento.value = "";
+  tipoSelecionado = null;
+  botoesTipo.forEach((b) => b.classList.remove("ativo"));
+
+  fecharOverlay();
+  carregarEventos();
+};
+
+const botoesTipo = document.querySelectorAll(".tipo-btn");
+botoesTipo.forEach((botao) => {
+  botao.onclick = () => {
+    botoesTipo.forEach((b) => b.classList.remove("ativo"));
+    botao.classList.add("ativo");
+    tipoSelecionado = botao.dataset.tipo;
+  };
+});
 
 
   botao.addEventListener("click", () => {
@@ -250,23 +293,15 @@ function renderizarCalendario() {
 
     // clicar no dia cria evento (somente admin)
     divDia.onclick = () => {
-      if (!modoAdmin) {
-        alert("Área restrita. Entre como administrador.");
-        return;
-      }
-      // para criar, usamos a função de adicionar
-      adicionarEvento(dia);
-    };
-
-    // opcional: duplo clique também cria (se você quiser)
-    divDia.ondblclick = () => {
-      if (!modoAdmin) return;
-      adicionarEvento(dia);
-    };
-
-    calendario.appendChild(divDia);
+  if (!modoAdmin) {
+    alert("Área restrita. Entre como administrador.");
+    return;
   }
-}
+
+  diaSelecionado = dia;
+  overlay.style.display = "flex";
+};
+
 
 // ----- NAVEGAÇÃO DE MESES -----
 if (btnAnterior) {
