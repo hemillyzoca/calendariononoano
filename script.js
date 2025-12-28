@@ -1,3 +1,8 @@
+let dataSelecionada = null;
+let tipoSelecionado = null;
+
+const popup = document.getElementById("popup-evento");
+
 let tipoSelecionado = null;
 let eventoSelecionado = null; // objeto do evento clicado (para editar/apagar)
 let chaveSelecionada = null; // chave "YYYY-M-D" do dia selecionado
@@ -96,7 +101,8 @@ function fecharOverlay() {
 
 // ----- ADICIONAR EVENTO (usamos prompt para simplicidade) -----
 async function adicionarEvento(dia) {
-  const nome = prompt("Nome do evento:");
+dataSelecionada = chaveData;
+popup.classList.remove("hidden");
   if (!nome) return;
 
   if (!tipoSelecionado) {
