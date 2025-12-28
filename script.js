@@ -26,6 +26,19 @@ const btnApagar = document.getElementById("btn-apagar");
 let dataAtual = new Date();
 let eventos = JSON.parse(localStorage.getItem("eventos")) || {}; // { "2026-1-15": [ {nome, tipo}, ... ] }
 
+async function carregarEventos() {
+  eventos = {};
+
+  const snapshot = await db.collection("eventos").get();
+  snapshot.forEach((doc) => {
+    const ev = doc.data();
+    if (!eventos[ev.chave]) eventos[ev.chave] = [];
+    eventos[ev.chave].push({ ...ev, id: doc.id });
+  });
+
+  renderizarCalendario();
+}
+
 const meses = [
   "Janeiro",
   "Fevereiro",
@@ -216,4 +229,4 @@ if (btnProximo) {
 }
 
 // ----- INICIALIZAÇÃO -----
-renderizarCalendario();
+carregarEventos();
