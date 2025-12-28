@@ -1,15 +1,8 @@
-.calendario {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 10px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 6px;
-}
-
-
+/* RESET */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -18,111 +11,19 @@ body {
   text-align: center;
 }
 
+/* TÍTULO */
 h1 {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
-.legenda {
-  margin: 15px;
-}
-
-.legenda span {
-  padding: 5px 10px;
-  border-radius: 8px;
-  margin: 5px;
-  display: inline-block;
-  font-size: 14px;
-}
-
-
-.evento {
-  margin-top: 4px;
-  padding: 4px;
-  border-radius: 6px;
-  font-size: 12px;
-  background: transparent;
-  color: #333;
-  border: none;
-}
-
-
-
-/* POPUP */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 350px;
-  text-align: center;
-}
-
-.modal button {
-  margin-top: 15px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  background: #333;
-  color: white;
-  cursor: pointer;
-}
-.topo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.topo button {
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-
-#overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  min-width: 200px;
-  position: relative;
-}
-
-#fechar {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  cursor: pointer;
-  font-size: 18px;
-}
+/* ÁREA ADMIN */
 .admin-box {
-  max-width: 480px; /* MAIS LARGA */
+  max-width: 480px;
   width: 90%;
   margin: 20px auto;
   padding: 20px;
   border-radius: 14px;
   border: 1px solid #ccc;
-  text-align: center;
 }
 
 .admin-header {
@@ -135,7 +36,6 @@ h1 {
 
 #senha-admin {
   width: 100%;
-  box-sizing: border-box;
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -151,264 +51,122 @@ h1 {
   border-radius: 8px;
   cursor: pointer;
 }
-#acoes-admin {
-  margin-top: 10px;
+
+/* TOPO */
+.topo {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
-#btn-editar {
-  flex: 1;
-  background: #444;
-  color: white;
-  border: none;
+.topo button {
+  padding: 6px 12px;
   border-radius: 8px;
-  padding: 6px;
-  cursor: pointer;
-}
-
-#btn-apagar {
-  flex: 1;
-  background: #c0392b;
-  color: white;
   border: none;
-  border-radius: 8px;
-  padding: 6px;
   cursor: pointer;
 }
 
-#btn-editar:hover,
-#btn-apagar:hover {
-  opacity: 0.85;
-}
-#fechar-modal {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  font-size: 22px;
-  cursor: pointer;
-  color: #333;
-}
-
-.modal {
-  position: relative;
-}
-
-/* ===== BARRA LATERAL NO DIA ===== */
-
-/* barra lateral padrão (invisível) */
-
-/* PROVA */
-.dia.prova::before {
-  background: #89b7c2;
-}
-
-/* TROTE */
-.dia.trote::before {
-  background: #fcf2b3;
-}
-
-/* COMEMORAÇÃO */
-.dia.comemoracao::before {
-  background: #f49aa2;
-}
-
-/* COMPETIÇÃO */
-.dia.competicao::before {
-  background: #a8bf8a;
-}
-@media (max-width: 768px) {
-  
-
-  .dia {
-    min-height: 80px;
-    padding: 6px;
-  }
+/* CALENDÁRIO */
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 8px;
 }
 
 .dia {
   background: white;
-  padding: 10px;
-  border-radius: 10px;
-  min-height: 80px;
-  position: relative;
   border: 1px solid #ddd;
-  overflow: hidden;
+  border-radius: 10px;
+  min-height: 90px;
+  padding: 8px;
+  position: relative;
+  text-align: left;
 }
 
-
-.dia::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background: transparent;
+.dia strong {
+  font-size: 14px;
 }
 
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 20px;
-    margin: 12px 0;
-  }
-
-  .admin-box {
-    max-width: 100%;
-    padding: 14px;
-  }
-
-
-  .evento {
-    font-size: 10px;
-    padding: 2px 4px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .calendario {
-    gap: 4px;
-  }
-
-  .dia {
-    min-height: 90px;
-    padding: 6px;
-  }
-
-  .evento {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 480px) {
-  .calendario {
-    gap: 3px;
-    padding: 0 4px;
-  }
-
-  .dia {
-    min-height: 65px;
-    padding: 4px;
-    border-radius: 8px;
-  }
-
-  .dia strong {
-    font-size: 12px;
-  }
-
-  .evento {
-    font-size: 9px;
-    padding: 2px 3px;
-    margin-top: 2px;
-  }
-
-  h1 {
-    font-size: 18px;
-  }
-
-  .modal {
-    width: 90%;
-    max-width: 300px;
-    padding: 16px;
-  }
-
-}
-.tipos-evento {
-  display: flex;
-  gap: 6px;
-  margin: 10px 0;
-}
-
-.tipo-btn {
-  border: 2px solid transparent;
-  padding: 4px 8px;
-  font-size: 12px;
+/* EVENTOS */
+.evento {
+  margin-top: 4px;
+  padding: 4px;
   border-radius: 6px;
+  font-size: 12px;
+  color: #333;
+}
+
+/* CORES DOS TIPOS */
+.prova { background: #89b7c2; }
+.trote { background: #fcf2b3; }
+.comemoracao { background: #f49aa2; }
+.competicao { background: #a8bf8a; }
+
+/* OVERLAY / MODAL */
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal {
   background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 320px;
+  position: relative;
+}
+
+#fechar-modal {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
   cursor: pointer;
 }
 
-.tipo-btn.ativo {
-  border-color: black;
-}
-
-.tipo-btn.prova {
-  background-color: #89b7c2;
-}
-
-.tipo-btn.trote {
-  background-color: #fcf2b3;
-}
-
-.tipo-btn.comemoracao {
-  background-color: #f49aa2;
-}
-
-.tipo-btn.competicao {
-  background-color: #a8bf8a;
-}
+/* BOTÕES DE TIPO */
 .tipos-evento {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .tipo-btn {
-  border: none;
   padding: 6px 10px;
   border-radius: 14px;
   font-size: 12px;
+  border: none;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
-/* cores */
-.tipo-btn.prova { background: #89b7c2; }
-.tipo-btn.trote { background: #fcf2b3; }
-.tipo-btn.comemoracao { background: #f49aa2; }
-.tipo-btn.competicao { background: #a8bf8a; }
-
-/* selecionado */
 .tipo-btn.ativo {
   opacity: 1;
   outline: 2px solid #333;
 }
 
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* MOBILE */
+@media (max-width: 600px) {
+  .dia {
+    min-height: 70px;
+    padding: 6px;
+  }
 
-.popup.hidden {
-  display: none;
-}
-
-.popup-conteudo {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  width: 280px;
-}
-
-.tipos-evento {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
-
-.tipo.ativo {
-  outline: 2px solid black;
-}
-.tipo-btn.ativo {
-  outline: 2px solid black;
+  .evento {
+    font-size: 10px;
+  }
 }
