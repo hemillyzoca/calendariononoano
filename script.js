@@ -153,9 +153,14 @@ function renderizarCalendario() {
 
     const chave = `${ano}-${mes}-${dia}`;
 
-    if (eventos[chave] && eventos[chave].length > 0) {
-      divDia.classList.add(eventos[chave][0].tipo);
-    }
+   if (
+  eventos[chave] &&
+  eventos[chave].length > 0 &&
+  eventos[chave][0].tipo
+) {
+  divDia.classList.add(eventos[chave][0].tipo);
+}
+
 
     divDia.innerHTML = `<strong>${dia}</strong>`;
 
@@ -222,5 +227,12 @@ if (btnProximo) {
 }
 
 // ----- INICIALIZAÇÃO -----
+function renderizarCalendario() {
+  if (!calendario) {
+    console.error("Calendário não encontrado no DOM");
+    return;
+  }
+
+  calendario.innerHTML = "";
 renderizarCalendario();
 
