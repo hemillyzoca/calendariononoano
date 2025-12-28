@@ -1,12 +1,12 @@
 .calendario {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 10px;
   width: 100%;
-  max-width: 100%;
   margin: 0 auto;
   padding: 0 6px;
 }
+
 
 * {
   box-sizing: border-box;
@@ -44,7 +44,6 @@ h1 {
   color: #333;
   border: none;
 }
-
 
 
 
@@ -90,10 +89,6 @@ h1 {
   border: none;
   cursor: pointer;
 }
-body {
-  font-family: Arial, sans-serif;
-}
-
 
 
 #overlay {
@@ -242,6 +237,7 @@ body {
   overflow: hidden;
 }
 
+
 .dia::before {
   content: "";
   position: absolute;
@@ -270,6 +266,8 @@ body {
     padding: 2px 4px;
   }
 }
+
+
 @media (max-width: 768px) {
   .calendario {
     gap: 4px;
