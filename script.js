@@ -116,6 +116,9 @@ const tipo = tipoSelecionado;
 
   carregarEventos(); // recarrega do Firebase
 }
+// 🔄 resetar seleção
+tipoSelecionado = null;
+botoesTipo.forEach((b) => b.classList.remove("ativo"));
 
 // ----- EDITAR EVENTO -----
 if (btnEditar) {
