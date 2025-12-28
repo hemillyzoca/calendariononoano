@@ -36,13 +36,6 @@ h1 {
 }
 
 
-.calendario {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  max-width: 700px; /* volta ao tamanho antigo */
-  margin: auto;
-}
 
 
 /* POPUP */
@@ -91,11 +84,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.calendario {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-}
+
 
 #overlay {
   display: none;
@@ -225,10 +214,7 @@ body {
   background: #a8bf8a;
 }
 @media (max-width: 768px) {
-  .calendario {
-    grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
-  }
+  
 
   .dia {
     min-height: 80px;
@@ -268,13 +254,31 @@ body {
   }
 
   .calendario {
-    gap: 4px;
-    padding: 4px;
-  }
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  max-width: 100%;
+  margin: auto;
+  padding: 0 6px;
+}
 
   
   .evento {
     font-size: 10px;
     padding: 2px 4px;
+  }
+}
+@media (max-width: 768px) {
+  .calendario {
+    gap: 4px;
+  }
+
+  .dia {
+    min-height: 90px;
+    padding: 6px;
+  }
+
+  .evento {
+    font-size: 11px;
   }
 }
