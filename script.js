@@ -3,7 +3,6 @@ let tipoSelecionado = null;
 
 const popup = document.getElementById("popup-evento");
 
-let tipoSelecionado = null;
 let eventoSelecionado = null; // objeto do evento clicado (para editar/apagar)
 let chaveSelecionada = null; // chave "YYYY-M-D" do dia selecionado
 let diaSelecionado = null; // número do dia selecionado (apenas para exibir)
