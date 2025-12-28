@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f6f6;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.legenda {
+  margin: 15px;
+}
+
+.legenda span {
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.evento {
+  margin-top: 4px;
+  padding: 2px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+/* PROVA – azul */
+.evento.prova {
+  border-left: 4px solid #89b7c2;
+}
+
+/* TROTE – vermelho */
+.evento.trote {
+  border-left: 4px solid #fcf2b3;
+}
+
+/* COMEMORAÇÃO – rosa */
+.evento.comemoracao {
+  border-left: 4px solid #f49aa2;
+}
+
+/* COMPETIÇÃO – verde */
+.evento.competicao {
+  border-left: 4px solid #a8bf8a;
+}
+
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  max-width: 700px; /* volta ao tamanho antigo */
+  margin: auto;
+}
+
+.dia {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  min-height: 80px; /* tamanho original */
+  position: relative;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.evento {
+  margin-top: 5px;
+  padding: 4px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+/* POPUP */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.modal button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+.topo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.topo button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 200px;
+  position: relative;
+}
+
+#fechar {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.admin-box {
+  max-width: 480px; /* MAIS LARGA */
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#senha-admin {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+#btn-entrar {
+  width: 100%;
+  padding: 8px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#acoes-admin {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#btn-editar {
+  flex: 1;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+#btn-apagar {
+  flex: 1;
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+#btn-editar:hover,
+#btn-apagar:hover {
+  opacity: 0.85;
+}
+#fechar-modal {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal {
+  position: relative;
+}
+
+/* ===== BARRA LATERAL NO DIA ===== */
+
+/* barra lateral padrão (invisível) */
+
+/* PROVA */
+.dia.prova::before {
+  background: #89b7c2;
+}
+
+/* TROTE */
+.dia.trote::before {
+  background: #fcf2b3;
+}
+
+/* COMEMORAÇÃO */
+.dia.comemoracao::before {
+  background: #f49aa2;
+}
+
+/* COMPETIÇÃO */
+.dia.competicao::before {
+  background: #a8bf8a;
+}
+@media (max-width: 768px) {
+  .calendario {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+
+  .dia {
+    min-height: 80px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+    margin: 12px 0;
+  }
+
+  .admin-box {
+    max-width: 100%;
+    padding: 14px;
+  }
+
+  .calendario {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .dia {
+    min-height: 70px;
+    padding: 4px;
+    font-size: 11px;
+  }
+
+  .evento {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+}
