@@ -155,9 +155,11 @@ function renderizarCalendario() {
     // Se houver eventos naquele dia, renderiza cada um
     if (eventos[chave]) {
       eventos[chave].forEach((evento) => {
-        const ev = document.createElement("div");
-        ev.className = "evento";
-        ev.innerText = evento.nome;
+  const ev = document.createElement("div");
+  ev.className = `evento ${evento.tipo}`;
+  divDia.classList.add(evento.tipo);
+  ev.innerText = evento.nome;
+
 
         // clicar no evento abre o modal com opções
         ev.onclick = (e) => {
