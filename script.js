@@ -1,5 +1,5 @@
 let dataSelecionada = null;
-let tipoSelecionado = null;
+let tipoSelecionado_TESTE = null;
 
 const popup = document.getElementById("popup-evento");
 
