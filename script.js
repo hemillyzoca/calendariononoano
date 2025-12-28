@@ -117,14 +117,23 @@ if (btnEditar) {
     );
     if (!novoNome) return;
 
-    await db.collection("eventos").doc(eventoSelecionado.id).update({
-      nome: novoNome,
-    });
+    try {
+      await db
+        .collection("eventos")
+        .doc(eventoSelecionado.id)
+        .update({
+          nome: novoNome,
+        });
 
-    fecharOverlay();
-    carregarEventos();
+      fecharOverlay();
+      carregarEventos(); // recarrega do Firebase
+    } catch (erro) {
+      alert("Erro ao editar evento");
+      console.error(erro);
+    }
   };
 }
+
 
 // ----- APAGAR EVENTO -----
 if (btnApagar) {
