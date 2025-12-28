@@ -314,4 +314,39 @@ h1 {
     max-width: 300px;
     padding: 16px;
   }
+
+}
+.tipos-evento {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.tipo-btn {
+  border: 2px solid transparent;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.tipo-btn.ativo {
+  border-color: black;
+}
+
+.tipo-btn.prova {
+  background-color: #89b7c2;
+}
+
+.tipo-btn.trote {
+  background-color: #fcf2b3;
+}
+
+.tipo-btn.comemoracao {
+  background-color: #f49aa2;
+}
+
+.tipo-btn.competicao {
+  background-color: #a8bf8a;
 }
