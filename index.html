@@ -72,5 +72,27 @@
 </script>
 
     <script src="script.js" defer></script>
+ 
+    <div id="popup-evento" class="popup hidden">
+  <div class="popup-conteudo">
+    <h3>Novo evento</h3>
+
+    <p>Escolha o tipo:</p>
+    <div class="tipos-evento">
+      <button class="tipo" data-tipo="prova">Prova</button>
+      <button class="tipo" data-tipo="trabalho">Trabalho</button>
+      <button class="tipo" data-tipo="comemoracao">Comemoração</button>
+      <button class="tipo" data-tipo="competicao">Competição</button>
+    </div>
+
+    <input id="nome-evento" type="text" placeholder="Nome do evento">
+
+    <div class="acoes">
+      <button id="cancelar">Cancelar</button>
+      <button id="salvar-evento">Salvar</button>
+    </div>
+  </div>
+</div>
+
   </body>
 </html>
