@@ -227,12 +227,5 @@ if (btnProximo) {
 }
 
 // ----- INICIALIZAÇÃO -----
-function renderizarCalendario() {
-  if (!calendario) {
-    console.error("Calendário não encontrado no DOM");
-    return;
-  }
-
-  calendario.innerHTML = "";
 renderizarCalendario();
 
