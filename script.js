@@ -24,13 +24,14 @@ const btnEditar = document.getElementById("btn-editar");
 const btnApagar = document.getElementById("btn-apagar");
 const botoesTipo = document.querySelectorAll(".tipo-btn");
 
-botoesTipo.forEach((btn) => {
-  btn.onclick = () => {
+botoesTipo.forEach((botao) => {
+  botao.onclick = () => {
     botoesTipo.forEach((b) => b.classList.remove("ativo"));
-    btn.classList.add("ativo");
-    tipoSelecionado = btn.dataset.tipo;
+    botao.classList.add("ativo");
+    tipoSelecionado = botao.dataset.tipo;
   };
 });
+
 
 // ----- DADOS E ESTADO -----
 let dataAtual = new Date();
