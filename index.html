@@ -46,6 +46,24 @@
       </div>
     </div>
 
+    <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAlPHkwXcg_yF4n8bUtooxkwuZe2N_K44A",
+    authDomain: "calendariononoano.firebaseapp.com",
+    projectId: "calendariononoano",
+    storageBucket: "calendariononoano.firebasestorage.app",
+    messagingSenderId: "588493113640",
+    appId: "1:588493113640:web:04f81f5313af6f6e28281d"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
     <script src="script.js"></script>
   </body>
 </html>
