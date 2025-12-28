@@ -378,3 +378,34 @@ h1 {
   opacity: 1;
   outline: 2px solid #333;
 }
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-conteudo {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 280px;
+}
+
+.tipos-evento {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tipo.ativo {
+  outline: 2px solid black;
+}
