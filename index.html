@@ -33,25 +33,28 @@
 
     <!-- MODAL -->
     <div id="overlay">
-      <div class="modal">
-        <span id="fechar-modal">×</span>
+  <div class="modal">
+    <span id="fechar-modal">×</span>
 
-        <h2 id="modal-titulo"></h2>
-        <p id="modal-dia"></p>
+    <h3>Novo evento</h3>
 
-        <div class="tipos-evento">
+    <input
+      type="text"
+      id="nome-evento"
+      placeholder="Nome do evento"
+    />
+
+    <p>Tipo do evento:</p>
+    <div class="tipos-evento">
       <button class="tipo-btn prova" data-tipo="prova">Prova</button>
       <button class="tipo-btn trote" data-tipo="trote">Trote</button>
       <button class="tipo-btn comemoracao" data-tipo="comemoracao">Comemoração</button>
       <button class="tipo-btn competicao" data-tipo="competicao">Competição</button>
     </div>
 
-        <div id="acoes-admin" style="display: none">
-          <button id="btn-editar">Editar</button>
-          <button id="btn-apagar">Apagar</button>
-        </div>
-      </div>
-    </div>
+    <button id="salvar-evento">Salvar</button>
+  </div>
+</div>
 
     <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
