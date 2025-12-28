@@ -283,3 +283,35 @@ h1 {
   }
 }
 
+@media (max-width: 480px) {
+  .calendario {
+    gap: 3px;
+    padding: 0 4px;
+  }
+
+  .dia {
+    min-height: 65px;
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  .dia strong {
+    font-size: 12px;
+  }
+
+  .evento {
+    font-size: 9px;
+    padding: 2px 3px;
+    margin-top: 2px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .modal {
+    width: 90%;
+    max-width: 300px;
+    padding: 16px;
+  }
+}
