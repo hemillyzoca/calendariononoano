@@ -232,5 +232,5 @@ if (btnProximo) {
 }
 
 // ----- INICIALIZAÇÃO -----
-renderizarCalendario();
+carregarEventos();
 
