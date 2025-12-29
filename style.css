@@ -1,3 +1,22 @@
+/* ===== CADEADO ADMIN ===== */
+.cadeado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.cadeado::before {
+  content: "🔒";
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cadeado.aberto::before {
+  content: "🔓";
+}
+
 /* RESET */
 * {
   box-sizing: border-box;
