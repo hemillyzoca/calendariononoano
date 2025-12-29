@@ -339,3 +339,52 @@ h1 {
     line-height: 1.2;
   }
 }
+/* ===== DIAS DA SEMANA ===== */
+.dias-semana,
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.dias-semana {
+  margin-bottom: 6px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+}
+
+.dias-semana div {
+  padding: 4px 0;
+}
+
+/* ===== CALENDÁRIO ===== */
+.calendario {
+  gap: 8px;
+}
+
+/* espaços antes do dia 1 */
+.dia.vazio {
+  background: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .calendario {
+    gap: 6px;
+  }
+
+  .dia {
+    min-height: 80px;
+    border-radius: 14px;
+  }
+
+  .dias-semana {
+    font-size: 11px;
+  }
+}
