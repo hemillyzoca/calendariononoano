@@ -402,17 +402,3 @@ acoes-evento {
   padding: 10px;
   cursor: pointer;
 }
-
-/* ===== CORREÇÃO FINAL DO CALENDÁRIO ===== */
-.calendario {
-  display: grid !important;
-  grid-template-columns: repeat(7, 1fr) !important;
-}
-
-.topo {
-  display: flex !important;
-}
-
-#mes-ano {
-  display: block !important;
-}
