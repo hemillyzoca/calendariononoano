@@ -163,6 +163,15 @@ h1 {
 .tipo-btn.comemoracao { background: #f49aa2; }
 .tipo-btn.competicao { background: #a8bf8a; }
 
+.cadeado::before {
+  content: "🔒";
+  font-size: 18px;
+}
+
+.cadeado.aberto::before {
+  content: "🔓";
+}
+
 /* MOBILE */
 @media (max-width: 600px) {
   .calendario {
@@ -250,12 +259,4 @@ h1 {
     font-size: 9px;
     padding: 2px 3px;
   }
-}
-.cadeado::before {
-  content: "🔒";
-  font-size: 18px;
-}
-
-.cadeado.aberto::before {
-  content: "🔓";
 }
