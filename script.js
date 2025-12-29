@@ -88,13 +88,17 @@ btnSalvar.onclick = async () => {
 async function carregarEventos() {
   eventos = {};
   const snap = await db.collection("eventos").get();
+
   snap.forEach(doc => {
     const ev = doc.data();
+    ev.id = doc.id; // 👈 ESSA LINHA É NOVA
     if (!eventos[ev.chave]) eventos[ev.chave] = [];
     eventos[ev.chave].push(ev);
   });
+
   renderizarCalendario();
 }
+
 
 // CALENDÁRIO
 function renderizarCalendario() {
@@ -127,13 +131,33 @@ for (let i = 0; i < primeiroDiaSemana; i++) {
   // pinta a lateral do dia com o tipo do PRIMEIRO evento
   div.classList.add(eventos[chave][0].tipo);
 
-  eventos[chave].forEach(ev => {
-    const e = document.createElement("div");
-    e.className = `evento ${ev.tipo}`;
-    e.innerText = ev.nome;
-    div.appendChild(e);
-  });
-}
+ eventos[chave].forEach(ev => {
+  const e = document.createElement("div");
+  e.className = `evento ${ev.tipo}`;
+  e.innerText = ev.nome;
+
+  e.onclick = (evt) => {
+    evt.stopPropagation();
+    if (!modoAdmin) return;
+
+    eventoSelecionadoId = ev.id;
+    diaSelecionado = dia;
+
+    inputNome.value = ev.nome;
+    tipoSelecionado = ev.tipo;
+
+    botoesTipo.forEach(b =>
+      b.classList.toggle("ativo", b.dataset.tipo === ev.tipo)
+    );
+
+    document.querySelector(".acoes-evento").style.display = "flex";
+    btnSalvar.innerText = "Salvar alterações";
+
+    overlay.style.display = "flex";
+  };
+
+  div.appendChild(e);
+});
 
 
     div.onclick = () => {
@@ -158,3 +182,36 @@ btnProximo.onclick = () => {
 };
 
 carregarEventos();
+
+  document.getElementById("btn-editar").onclick = async () => {
+  if (!eventoSelecionadoId) return;
+
+  await db.collection("eventos").doc(eventoSelecionadoId).update({
+    nome: inputNome.value,
+    tipo: tipoSelecionado
+  });
+
+  fecharPopup();
+  carregarEventos();
+};
+
+document.getElementById("btn-apagar").onclick = async () => {
+  if (!eventoSelecionadoId) return;
+
+  if (!confirm("Deseja apagar este evento?")) return;
+
+  await db.collection("eventos").doc(eventoSelecionadoId).delete();
+
+  fecharPopup();
+  carregarEventos();
+};
+function fecharPopup() {
+  overlay.style.display = "none";
+  inputNome.value = "";
+  tipoSelecionado = null;
+  eventoSelecionadoId = null;
+  btnSalvar.innerText = "Salvar";
+  document.querySelector(".acoes-evento").style.display = "none";
+  botoesTipo.forEach(b => b.classList.remove("ativo"));
+}
+btnFechar.onclick = fecharPopup;
