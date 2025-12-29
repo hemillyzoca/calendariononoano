@@ -26,7 +26,13 @@
   <button id="proximo">▶</button>
 </div>
 
-  <div class="dias-semana">
+  <div class="mes">
+  <button onclick="mesAnterior()">◀</button>
+  <span id="mes-ano"></span>
+  <button onclick="proximoMes()">▶</button>
+</div>
+
+<div class="dias-semana">
   <div>Dom</div>
   <div>Seg</div>
   <div>Ter</div>
@@ -36,7 +42,8 @@
   <div>Sáb</div>
 </div>
 
-<div id="calendario" class="calendario"></div>
+<div class="calendario" id="calendario"></div>
+
 
 <!-- POPUP -->
 <div id="overlay">
