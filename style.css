@@ -279,3 +279,20 @@ h1 {
     padding: 2px 3px;
   }
 }
+/* ===== BOTÕES DE NAVEGAÇÃO (FLECHAS) ===== */
+.nav-btn {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: none;
+  background: #e0e0e0;
+  cursor: pointer;
+  line-height: 1;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.nav-btn:hover {
+  background: #d0d0d0;
+}
