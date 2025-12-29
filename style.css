@@ -250,6 +250,23 @@ h1 {
 .tipo-btn.competicao {
   background: #a8bf8a;
 }
+
+.dias-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+  text-align: center;
+  font-weight: 600;
+  color: #666;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .dias-semana {
+    font-size: 11px;
+  }
+}
+
 /* AJUSTES ESPECÍFICOS PARA CELULAR */
 @media (max-width: 600px) {
 
