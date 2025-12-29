@@ -197,7 +197,7 @@ h1 {
 }
 
 
-}
+
 /* ===== BOTÕES DE NAVEGAÇÃO (FLECHAS) ===== */
 .nav-btn {
   font-size: 20px;
@@ -296,7 +296,7 @@ h1 {
   cursor: pointer;
 }
 
-acoes-evento {
+.acoes-evento {
   display: flex;
   gap: 10px;
   margin-top: 10px;
