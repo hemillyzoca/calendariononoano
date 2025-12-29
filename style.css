@@ -383,3 +383,11 @@ h1 {
   background: #e0e0e0;
   cursor: pointer;
 }
+.cadeado::before {
+  content: "🔒";
+  font-size: 18px;
+}
+
+.cadeado.aberto::before {
+  content: "🔓";
+}
