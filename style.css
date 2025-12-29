@@ -175,16 +175,7 @@ h1 {
 @media (max-width: 600px) {
   
 
-  .dia {
-    aspect-ratio: 1 / 1;   /* deixa quadrado */
-    min-height: auto;
-    padding: 6px;
-    border-radius: 12px;
-  }
-
-  .dia strong {
-    font-size: 13px;
-  }
+  
 
   .evento {
     font-size: 10px;
@@ -258,10 +249,7 @@ h1 {
 
 
 @media (max-width: 600px) {
-  .dias-semana {
-    font-size: 11px;
-  }
-}
+  
 
 /* AJUSTES ESPECÍFICOS PARA CELULAR */
 @media (max-width: 600px) {
@@ -279,16 +267,7 @@ h1 {
   }
 
  
-  .dia {
-    min-height: 90px;        /* AQUI é o principal */
-    border-radius: 16px;     /* mais arredondado */
-    padding: 8px;
-  }
-
-  .dia .numero {
-    font-size: 14px;
-    font-weight: 600;
-  }
+  
 
   .evento {
     font-size: 11px;
@@ -297,23 +276,7 @@ h1 {
 }
 /* ===== MOBILE REAL (corrige tamanho pequeno) ===== */
 @media (max-width: 600px) {
-  .dias-semana {
-    font-size: 11px;
-    margin-bottom: 4px;
-  }
-}
-
- 
-  .dia {
-    border-radius: 14px;
-    padding: 6px;
-  }
-
-  .dia .numero {
-    font-size: 13px;
-    font-weight: 600;
-  }
-
+  
   .evento {
     font-size: 11px;
     line-height: 1.2;
@@ -344,28 +307,8 @@ h1 {
   pointer-events: none;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
   
-  .dia {
-    min-height: 80px;
-    border-radius: 14px;
-  }
-
-  .dias-semana {
-    font-size: 11px;
-  }
-}
-/* ===== GARANTE GRID NO CELULAR ===== */
-@media (max-width: 600px) {
  
-  
-  .dia {
-    min-height: 85px;
-    padding: 6px;
-    border-radius: 14px;
-  }
-}
 /* ===== CALENDÁRIO (BASE ÚNICA E DEFINITIVA) ===== */
 
 .calendario {
@@ -407,13 +350,27 @@ h1 {
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
   .calendario,
-  .dias-semana {
-    max-width: 100%;
+  
+/* ===== AJUSTE REAL PARA CELULAR ===== */
+@media (max-width: 600px) {
+
+  .calendario {
+    gap: 4px;
+    padding: 0 4px;
   }
 
   .dia {
-    min-height: 80px;
-    padding: 6px;
-    border-radius: 14px;
+    min-height: 60px;        /* 🔥 menor, mas legível */
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  .dia strong {
+    font-size: 12px;
+  }
+
+  .evento {
+    font-size: 9px;
+    padding: 2px 3px;
   }
 }
