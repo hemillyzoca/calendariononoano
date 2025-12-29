@@ -81,22 +81,20 @@ h1 {
   margin-bottom: 15px;
 }
 
-/* DIAS DA SEMANA */
+
+/* ===== DIAS DA SEMANA ===== */
 .dias-semana {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   max-width: 900px;
   margin: 0 auto 6px;
   padding: 0 8px;
-  font-weight: bold;
+  gap: 8px;
+  font-weight: 600;
   color: #666;
 }
 
-.dias-semana div {
-  text-align: center;
-}
-
-/* CALENDÁRIO */
+/* ===== CALENDÁRIO ===== */
 .calendario {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -106,20 +104,64 @@ h1 {
   padding: 0 8px;
 }
 
+/* DIA */
 .dia {
   background: white;
   border: 1px solid #ddd;
   border-radius: 14px;
-  min-height: 90px;
-  padding: 8px 8px 8px 16px;
+  min-height: 100px;
+  padding: 8px 8px 8px 14px;
   position: relative;
   text-align: left;
   overflow: hidden;
 }
 
-.dia strong {
-  font-size: 14px;
+/* espaços antes do dia 1 */
+.dia.vazio {
+  background: transparent;
+  border: none;
+  pointer-events: none;
 }
+
+/* barra lateral */
+.dia::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: transparent;
+}
+
+.dia.prova::before { background: #89b7c2; }
+.dia.trote::before { background: #fcf2b3; }
+.dia.comemoracao::before { background: #f49aa2; }
+.dia.competicao::before { background: #a8bf8a; }
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .calendario {
+    gap: 4px;
+    padding: 0 4px;
+  }
+
+  .dia {
+    min-height: 65px;
+    padding: 4px 4px 4px 10px;
+    border-radius: 12px;
+  }
+
+  .dia strong {
+    font-size: 12px;
+  }
+
+  .evento {
+    font-size: 9px;
+  }
+}
+
+
 
 /* BARRA LATERAL */
 .dia::before {
@@ -191,93 +233,7 @@ h1 {
   content: "🔓";
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-  .calendario {
-    gap: 4px;
-  }
 
-  .dia {
-    min-height: 65px;
-    padding: 6px 6px 6px 14px;
-  }
-
-  .evento {
-    font-size: 10px;
-  }
-}
-/* ===== DIAS DA SEMANA ===== */
-.dias-semana {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  max-width: 900px;
-  margin: 0 auto 6px;
-  padding: 0 8px;
-  gap: 8px;
-}
-
-.dias-semana div {
-  text-align: center;
-  font-weight: 600;
-  font-size: 13px;
-  color: #666;
-}
-
-/* ===== CALENDÁRIO ===== */
-.calendario {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 8px;
-}
-
-.dia {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 14px;
-  min-height: 100px;
-  padding: 8px 8px 8px 14px;
-  position: relative;
-  text-align: left;
-}
-
-/* espaços antes do dia 1 */
-.dia.vazio {
-  background: transparent;
-  border: none;
-  pointer-events: none;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
-  .dias-semana {
-    gap: 4px;
-    padding: 0 4px;
-    font-size: 12px;
-  }
-
-  .calendario {
-    gap: 4px;
-    padding: 0 4px;
-  }
-
-  .dia {
-    min-height: 65px;   /* 🔥 tamanho correto no celular */
-    padding: 4px 4px 4px 10px;
-    border-radius: 12px;
-  }
-
-  .dia strong {
-    font-size: 12px;
-  }
-
-  .evento {
-    font-size: 9px;
-    padding: 2px 3px;
-  }
 }
 /* ===== BOTÕES DE NAVEGAÇÃO (FLECHAS) ===== */
 .nav-btn {
