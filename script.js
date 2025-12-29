@@ -33,7 +33,8 @@ const meses = [
 btnEntrar.onclick = () => {
   if (inputSenha.value === SENHA_ADMIN) {
     modoAdmin = true;
-    cadeado.innerText = "🔓";
+    cadeado.classList.remove("fechado");
+cadeado.classList.add("aberto");
     alert("Modo administrador ativado");
   } else {
     alert("Senha incorreta");
