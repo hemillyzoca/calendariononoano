@@ -69,15 +69,6 @@ h1 {
 }
 
 /* CALENDÁRIO */
-.calendario {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 8px;
-}
 
 .dia {
   background: white;
@@ -287,10 +278,7 @@ h1 {
     font-size: 22px;
   }
 
-  .calendario {
-    gap: 10px; /* mais respiro entre os dias */
-  }
-
+ 
   .dia {
     min-height: 90px;        /* AQUI é o principal */
     border-radius: 16px;     /* mais arredondado */
@@ -315,13 +303,7 @@ h1 {
   }
 }
 
-  .calendario {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: 95px; /* <<< ISSO é o que resolve */
-    gap: 8px;
-  }
-
+ 
   .dia {
     border-radius: 14px;
     padding: 6px;
@@ -339,13 +321,7 @@ h1 {
 }
 /* ===== DIAS DA SEMANA ===== */
 .dias-semana,
-.calendario {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 8px;
-}
+
 
 .dias-semana {
   margin-bottom: 6px;
@@ -360,9 +336,6 @@ h1 {
 }
 
 /* ===== CALENDÁRIO ===== */
-.calendario {
-  gap: 8px;
-}
 
 /* espaços antes do dia 1 */
 .dia.vazio {
@@ -385,18 +358,61 @@ h1 {
 }
 /* ===== GARANTE GRID NO CELULAR ===== */
 @media (max-width: 600px) {
+ 
+  
+  .dia {
+    min-height: 85px;
+    padding: 6px;
+    border-radius: 14px;
+  }
+}
+/* ===== CALENDÁRIO (BASE ÚNICA E DEFINITIVA) ===== */
+
+.calendario {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 8px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.dia {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  min-height: 90px;
+  padding: 8px;
+  position: relative;
+  text-align: left;
+}
+
+/* ===== DIAS DA SEMANA ===== */
+.dias-semana {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  max-width: 900px;
+  margin: 0 auto 6px;
+  padding: 0 8px;
+  gap: 8px;
+}
+
+.dias-semana div {
+  text-align: center;
+  font-weight: bold;
+  color: #555;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
   .calendario,
   .dias-semana {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-  }
-
-  .calendario {
-    gap: 6px;
+    max-width: 100%;
   }
 
   .dia {
-    min-height: 85px;
+    min-height: 80px;
     padding: 6px;
     border-radius: 14px;
   }
