@@ -215,3 +215,6 @@ function fecharPopup() {
   botoesTipo.forEach(b => b.classList.remove("ativo"));
 }
 btnFechar.onclick = fecharPopup;
+}
+
+console.log("JS carregou até o final");
