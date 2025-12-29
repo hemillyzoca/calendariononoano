@@ -1,3 +1,5 @@
+let eventoSelecionadoId = null;
+
 const SENHA_ADMIN = "050215";
 let modoAdmin = false;
 
