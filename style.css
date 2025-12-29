@@ -374,3 +374,12 @@ h1 {
     padding: 2px 3px;
   }
 }
+.nav-btn {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #e0e0e0;
+  cursor: pointer;
+}
