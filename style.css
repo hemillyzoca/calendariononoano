@@ -281,9 +281,9 @@ h1 {
 }
 /* ===== BOTÕES DE NAVEGAÇÃO (FLECHAS) ===== */
 .nav-btn {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
-  padding: 9px 18px;
+  padding: 8px 16px;
   border-radius: 12px;
   border: none;
   background: #e0e0e0;
