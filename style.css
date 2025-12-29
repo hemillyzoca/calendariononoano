@@ -187,16 +187,6 @@ h1 {
 .tipo-btn.comemoracao { background: #f49aa2; }
 .tipo-btn.competicao { background: #a8bf8a; }
 
-.cadeado::before {
-  content: "🔒";
-  font-size: 18px;
-}
-
-.cadeado.aberto::before {
-  content: "🔓";
-}
-
-
 
 /* ===== BOTÕES DE NAVEGAÇÃO (FLECHAS) ===== */
 .nav-btn {
