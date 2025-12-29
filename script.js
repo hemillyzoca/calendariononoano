@@ -181,9 +181,19 @@ btnProximo.onclick = () => {
   carregarEventos();
 };
 
-carregarEventos();
+ function fecharPopup() {
+  overlay.style.display = "none";
+  inputNome.value = "";
+  tipoSelecionado = null;
+  eventoSelecionadoId = null;
+  btnSalvar.innerText = "Salvar";
+  document.querySelector(".acoes-evento").style.display = "none";
+  botoesTipo.forEach(b => b.classList.remove("ativo"));
+}
 
-  document.getElementById("btn-editar").onclick = async () => {
+btnFechar.onclick = fecharPopup;
+
+document.getElementById("btn-editar").onclick = async () => {
   if (!eventoSelecionadoId) return;
 
   await db.collection("eventos").doc(eventoSelecionadoId).update({
@@ -205,16 +215,5 @@ document.getElementById("btn-apagar").onclick = async () => {
   fecharPopup();
   carregarEventos();
 };
-function fecharPopup() {
-  overlay.style.display = "none";
-  inputNome.value = "";
-  tipoSelecionado = null;
-  eventoSelecionadoId = null;
-  btnSalvar.innerText = "Salvar";
-  document.querySelector(".acoes-evento").style.display = "none";
-  botoesTipo.forEach(b => b.classList.remove("ativo"));
-}
-btnFechar.onclick = fecharPopup;
-}
-
-console.log("JS carregou até o final");
+ 
+carregarEventos();
