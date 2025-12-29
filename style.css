@@ -34,21 +34,22 @@ h1 {
   margin-bottom: 10px;
 }
 
-#senha-admin {
+#senha-admin,
+#btn-entrar {
   width: 100%;
   padding: 8px;
   border-radius: 8px;
+}
+
+#senha-admin {
   border: 1px solid #ccc;
   margin-bottom: 10px;
 }
 
 #btn-entrar {
-  width: 100%;
-  padding: 8px;
   background: black;
   color: white;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -61,261 +62,26 @@ h1 {
   margin-bottom: 15px;
 }
 
-.topo button {
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-/* CALENDÁRIO */
-
-.dia {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 14px;
-  min-height: 120px;
-  padding: 10px 10px 10px 16px;
-  position: relative;
-  text-align: left;
-  overflow: hidden;
-}
-
-
-
-.dia strong {
-  font-size: 14px;
-}
-
-/* EVENTOS */
-.evento {
-  margin-top: 4px;
-  padding: 4px;
-  border-radius: 6px;
-  font-size: 12px;
-  color: #333;
-}
-
-/* CORES DOS TIPOS */
-.dia::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background: transparent;
-  border-radius: 14px 0 0 14px;
-}
-
-
-/* CORES SÓ NA LATERAL */
-.dia.prova::before { background: #89b7c2; }
-.dia.trote::before { background: #fcf2b3; }
-.dia.comemoracao::before { background: #f49aa2; }
-.dia.competicao::before { background: #a8bf8a; }
-
-
-/* OVERLAY / MODAL */
-#overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
-.modal {
-  background: white;
-  padding: 24px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 420px; /* AQUI aumenta */
-  position: relative;
-}
-
-
-#fechar-modal {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* BOTÕES DE TIPO */
-.tipos-evento {
-  display: flex;
-  gap: 8px;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-
-
-.tipo-btn {
-  flex: 1;
-  padding: 8px 0;
-  font-size: 12px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-
-
-.tipo-btn.ativo {
-  opacity: 1;
-  outline: 2px solid #333;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  
-
-  
-
-  .evento {
-    font-size: 10px;
-    margin-top: 2px;
-  }
-}
-
-
-.tipo-btn {
-  color: #000; /* letra preta */
-}
-
-#nome-evento {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 12px;
-}
-
-#salvar-evento {
-  width: 100%;
-  margin-top: 12px;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background: #333;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-}
-.tipo-btn {
-  color: #000;
-  border-radius: 999px;
-  font-weight: 600;
-}
-
-/* BOTÕES COLORIDOS POR TIPO */
-.tipo-btn.prova {
-  background: #89b7c2;
-}
-
-.tipo-btn.trote {
-  background: #fcf2b3;
-}
-
-.tipo-btn.comemoracao {
-  background: #f49aa2;
-}
-
-.tipo-btn.competicao {
-  background: #a8bf8a;
-}
-
+/* DIAS DA SEMANA */
 .dias-semana {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   max-width: 900px;
-  margin: 0 auto 6px auto;
+  margin: 0 auto 6px;
   padding: 0 8px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 13px;
-  color: #777;
-}
-
-.dias-semana div {
-  padding: 4px 0;
-}
-
-
-@media (max-width: 600px) {
-  
-
-/* AJUSTES ESPECÍFICOS PARA CELULAR */
-@media (max-width: 600px) {
-
-  body {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .topo h2 {
-    font-size: 22px;
-  }
-
- 
-  
-
-  .evento {
-    font-size: 11px;
-    line-height: 1.2;
-  }
-}
-/* ===== MOBILE REAL (corrige tamanho pequeno) ===== */
-@media (max-width: 600px) {
-  
-  .evento {
-    font-size: 11px;
-    line-height: 1.2;
-  }
-}
-/* ===== DIAS DA SEMANA ===== */
-.dias-semana,
-
-
-.dias-semana {
-  margin-bottom: 6px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
+  font-weight: bold;
   color: #666;
 }
 
 .dias-semana div {
-  padding: 4px 0;
+  text-align: center;
 }
 
-/* ===== CALENDÁRIO ===== */
-
-/* espaços antes do dia 1 */
-.dia.vazio {
-  background: transparent;
-  border: none;
-  pointer-events: none;
-}
-
-  
- 
-/* ===== CALENDÁRIO (BASE ÚNICA E DEFINITIVA) ===== */
-
+/* CALENDÁRIO */
 .calendario {
-  display: grid !important;
-  grid-template-columns: repeat(7, 1fr) !important;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   gap: 8px;
-  width: 100%;
   max-width: 900px;
   margin: 0 auto;
   padding: 0 8px;
@@ -326,68 +92,89 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 14px;
   min-height: 90px;
-  padding: 8px;
+  padding: 8px 8px 8px 16px;
   position: relative;
   text-align: left;
+  overflow: hidden;
 }
 
-/* ===== DIAS DA SEMANA ===== */
-.dias-semana {
-  display: grid !important;
-  grid-template-columns: repeat(7, 1fr) !important;
-  max-width: 900px;
-  margin: 0 auto 6px;
-  padding: 0 8px;
+.dia strong {
+  font-size: 14px;
+}
+
+/* BARRA LATERAL */
+.dia::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: transparent;
+}
+
+.dia.prova::before { background: #89b7c2; }
+.dia.trote::before { background: #fcf2b3; }
+.dia.comemoracao::before { background: #f49aa2; }
+.dia.competicao::before { background: #a8bf8a; }
+
+/* EVENTOS */
+.evento {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+/* MODAL */
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+}
+
+/* BOTÕES DE TIPO */
+.tipos-evento {
+  display: flex;
   gap: 8px;
+  margin: 12px 0;
 }
 
-.dias-semana div {
-  text-align: center;
-  font-weight: bold;
-  color: #555;
+.tipo-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
-  .calendario,
-  
-/* ===== AJUSTE REAL PARA CELULAR ===== */
-@media (max-width: 600px) {
+.tipo-btn.prova { background: #89b7c2; }
+.tipo-btn.trote { background: #fcf2b3; }
+.tipo-btn.comemoracao { background: #f49aa2; }
+.tipo-btn.competicao { background: #a8bf8a; }
 
+/* MOBILE */
+@media (max-width: 600px) {
   .calendario {
     gap: 4px;
-    padding: 0 4px;
   }
 
   .dia {
-    min-height: 60px;        /* 🔥 menor, mas legível */
-    padding: 4px;
-    border-radius: 12px;
-  }
-
-  .dia strong {
-    font-size: 12px;
+    min-height: 65px;
+    padding: 6px 6px 6px 14px;
   }
 
   .evento {
-    font-size: 9px;
-    padding: 2px 3px;
+    font-size: 10px;
   }
-}
-.nav-btn {
-  font-size: 18px;
-  font-weight: bold;
-  padding: 6px 14px;
-  border-radius: 10px;
-  border: none;
-  background: #e0e0e0;
-  cursor: pointer;
-}
-.cadeado::before {
-  content: "🔒";
-  font-size: 18px;
-}
-
-.cadeado.aberto::before {
-  content: "🔓";
 }
