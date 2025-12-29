@@ -182,9 +182,7 @@ h1 {
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .calendario {
-    gap: 6px;
-  }
+  
 
   .dia {
     aspect-ratio: 1 / 1;   /* deixa quadrado */
@@ -375,10 +373,7 @@ h1 {
 
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
-  .calendario {
-    gap: 6px;
-  }
-
+  
   .dia {
     min-height: 80px;
     border-radius: 14px;
@@ -386,5 +381,23 @@ h1 {
 
   .dias-semana {
     font-size: 11px;
+  }
+}
+/* ===== GARANTE GRID NO CELULAR ===== */
+@media (max-width: 600px) {
+  .calendario,
+  .dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .calendario {
+    gap: 6px;
+  }
+
+  .dia {
+    min-height: 85px;
+    padding: 6px;
+    border-radius: 14px;
   }
 }
