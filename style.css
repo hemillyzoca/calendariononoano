@@ -254,12 +254,19 @@ h1 {
 .dias-semana {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-bottom: 6px;
+  max-width: 900px;
+  margin: 0 auto 6px auto;
+  padding: 0 8px;
   text-align: center;
   font-weight: 600;
-  color: #666;
   font-size: 13px;
+  color: #777;
 }
+
+.dias-semana div {
+  padding: 4px 0;
+}
+
 
 @media (max-width: 600px) {
   .dias-semana {
@@ -304,6 +311,11 @@ h1 {
 }
 /* ===== MOBILE REAL (corrige tamanho pequeno) ===== */
 @media (max-width: 600px) {
+  .dias-semana {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+}
 
   .calendario {
     display: grid;
