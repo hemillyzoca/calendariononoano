@@ -110,24 +110,24 @@ function renderizarCalendario() {
 
   const diasNoMes = new Date(ano, mes + 1, 0).getDate();
 
-  // dia da semana do primeiro dia do mês (0 = domingo)
-const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+  const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
 
-// cria espaços vazios antes do dia 1
 for (let i = 0; i < primeiroDiaSemana; i++) {
   const vazio = document.createElement("div");
   vazio.className = "dia vazio";
   calendario.appendChild(vazio);
 }
 
+
   for (let dia = 1; dia <= diasNoMes; dia++) {
     const div = document.createElement("div");
     div.className = "dia";
     div.innerHTML = `<strong>${dia}</strong>`;
-
-    const chave = `${ano}-${mes}-${dia}`;
+      
+  const chave = `${ano}-${mes}-${dia}`;
    if (eventos[chave]) {
 
+  
   // pinta a lateral do dia com o tipo do PRIMEIRO evento
   div.classList.add(eventos[chave][0].tipo);
 
