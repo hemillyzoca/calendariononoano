@@ -178,3 +178,76 @@ h1 {
     font-size: 10px;
   }
 }
+/* ===== DIAS DA SEMANA ===== */
+.dias-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  max-width: 900px;
+  margin: 0 auto 6px;
+  padding: 0 8px;
+  gap: 8px;
+}
+
+.dias-semana div {
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  color: #666;
+}
+
+/* ===== CALENDÁRIO ===== */
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.dia {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  min-height: 100px;
+  padding: 8px 8px 8px 14px;
+  position: relative;
+  text-align: left;
+}
+
+/* espaços antes do dia 1 */
+.dia.vazio {
+  background: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .dias-semana {
+    gap: 4px;
+    padding: 0 4px;
+    font-size: 12px;
+  }
+
+  .calendario {
+    gap: 4px;
+    padding: 0 4px;
+  }
+
+  .dia {
+    min-height: 65px;   /* 🔥 tamanho correto no celular */
+    padding: 4px 4px 4px 10px;
+    border-radius: 12px;
+  }
+
+  .dia strong {
+    font-size: 12px;
+  }
+
+  .evento {
+    font-size: 9px;
+    padding: 2px 3px;
+  }
+}
