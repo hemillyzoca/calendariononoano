@@ -376,3 +376,28 @@ h1 {
   font-size: 15px;
   cursor: pointer;
 }
+.acoes-evento {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#btn-editar {
+  flex: 1;
+  background: #777;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#btn-apagar {
+  flex: 1;
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+}
