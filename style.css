@@ -250,3 +250,38 @@ h1 {
 .tipo-btn.competicao {
   background: #a8bf8a;
 }
+/* AJUSTES ESPECÍFICOS PARA CELULAR */
+@media (max-width: 600px) {
+
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .topo h2 {
+    font-size: 22px;
+  }
+
+  .calendario {
+    gap: 10px; /* mais respiro entre os dias */
+  }
+
+  .dia {
+    min-height: 90px;        /* AQUI é o principal */
+    border-radius: 16px;     /* mais arredondado */
+    padding: 8px;
+  }
+
+  .dia .numero {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .evento {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+}
