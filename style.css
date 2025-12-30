@@ -200,9 +200,18 @@ h1 {
 /* AÇÕES */
 .acoes-evento {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 14px;
 }
+
+.acoes-evento button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 
 #btn-apagar {
   background: #c0392b;
@@ -235,4 +244,66 @@ h1 {
     min-height: 70px;
     padding: 6px 6px 6px 14px;
   }
+}
+/* ===== POPUP ===== */
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  width: 420px; /* popup mais largo */
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 18px; /* arredondado igual antes */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* input maior */
+#nome-evento {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 14px;
+}
+
+/* botões coloridos com letra preta */
+.tipo-btn {
+  color: black;
+  font-weight: 500;
+}
+
+/* botões na mesma linha */
+.tipos-evento {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+/* botão salvar embaixo */
+#salvar-evento {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #333;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#fechar-modal {
+  float: right;
+  cursor: pointer;
+  font-size: 22px;
 }
