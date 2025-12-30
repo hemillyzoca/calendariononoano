@@ -62,7 +62,18 @@ h1 {
 
 .nav-btn {
   font-size: 20px;
-  padding: 6px 12px;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 18px; /* mais arredondado */
+  border: none;
+  background: #e5e5e5;
+  cursor: pointer;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.nav-btn:hover {
+  background: #d6d6d6;
 }
 
 /* DIAS */
@@ -73,6 +84,9 @@ h1 {
   margin: auto;
   padding: 0 8px;
   gap: 8px;
+  color: #666;
+}
+
 }
 
 .dias-semana div {
