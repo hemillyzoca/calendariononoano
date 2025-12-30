@@ -232,3 +232,7 @@ function abrirVisualizacao(dia) {
 document.getElementById("fechar-view").onclick = () => {
   document.getElementById("overlay-view").style.display = "none";
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderizarCalendario();
+});
