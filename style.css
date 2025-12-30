@@ -55,9 +55,15 @@ h1 {
 /* TOPO */
 .topo {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+#mes-ano {
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .nav-btn {
@@ -306,4 +312,72 @@ h1 {
   float: right;
   cursor: pointer;
   font-size: 22px;
+}
+@media (max-width: 600px) {
+
+  /* título principal */
+  h1 {
+    font-size: 20px;
+    margin: 12px 0;
+  }
+
+  /* área administrativa */
+  .admin-box {
+    padding: 14px;
+    margin: 12px auto;
+  }
+
+  .admin-box h2 {
+    font-size: 16px;
+  }
+
+  #senha-admin,
+  #btn-entrar {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* topo mês + flechas */
+  #mes-ano {
+    font-size: 16px;
+  }
+
+  .nav-btn {
+    font-size: 18px;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 4px 8px;
+  }
+
+  /* popup/modal */
+  .modal {
+    max-width: 360px;
+    padding: 16px;
+  }
+
+  .modal h2 {
+    font-size: 18px;
+  }
+
+  #nome-evento {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .tipo-btn {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+
+  .salvar-evento {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn-editar,
+  .btn-apagar {
+    font-size: 14px;
+    padding: 10px;
+  }
+
 }
