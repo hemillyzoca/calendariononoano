@@ -1,3 +1,5 @@
+console.log("JS carregou");
+
 let eventoSelecionadoId = null;
 
 const SENHA_ADMIN = "050215";
