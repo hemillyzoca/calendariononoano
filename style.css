@@ -523,3 +523,54 @@ h1 {
   justify-content: center;
   gap: 8px;
 }
+/* ===== POPUP VISUALIZAÇÃO ===== */
+#overlay-view {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.view {
+  background: #fff;
+  width: 90%;
+  max-width: 380px;
+  border-radius: 18px;
+  padding: 20px;
+  text-align: left;
+}
+
+.modal.view h3 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+#lista-eventos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.evento-view {
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* cores por tipo */
+.evento-view.prova { background: #89b7c2; }
+.evento-view.trote { background: #fcf2b3; }
+.evento-view.comemoracao { background: #f49aa2; }
+.evento-view.competicao { background: #a8bf8a; }
+
+#fechar-view {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 20px;
+  cursor: pointer;
+}
