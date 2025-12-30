@@ -516,3 +516,10 @@ h1 {
     padding: 2px 4px;
   }
 }
+/* Centralizar cadeado + texto da Área Administrativa */
+.admin-box h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
