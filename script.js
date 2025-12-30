@@ -57,10 +57,18 @@ botoesTipo.forEach(btn => {
 });
 
 // ================= POPUP =================
-function abrirPopup(dia) {
-  diaSelecionado = dia;
-  overlay.style.display = "flex";
-}
+diaElemento.addEventListener("click", () => {
+
+  // SE NÃO FOR ADMIN → só visualizar
+  if (!adminAtivo) {
+    abrirVisualizacao(dia);
+    return;
+  }
+
+  // SE FOR ADMIN → abre popup normal
+  abrirPopupEdicao(dia);
+});
+
 
 function fecharPopup() {
   overlay.style.display = "none";
@@ -199,3 +207,29 @@ btnProximo.onclick = () => {
 };
 
 carregarEventos();
+
+function abrirVisualizacao(dia) {
+  const overlay = document.getElementById("overlay-view");
+  const lista = document.getElementById("lista-eventos");
+
+  lista.innerHTML = "";
+
+  const eventos = dados[dia] || [];
+
+  if (eventos.length === 0) {
+    lista.innerHTML = "<p>Nenhum evento nesse dia.</p>";
+  } else {
+    eventos.forEach(ev => {
+      const div = document.createElement("div");
+      div.className = `evento-view ${ev.tipo}`;
+      div.textContent = ev.nome;
+      lista.appendChild(div);
+    });
+  }
+
+  overlay.style.display = "flex";
+}
+
+document.getElementById("fechar-view").onclick = () => {
+  document.getElementById("overlay-view").style.display = "none";
+};
