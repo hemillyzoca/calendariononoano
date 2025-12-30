@@ -57,9 +57,8 @@ botoesTipo.forEach(btn => {
 });
 
 // ================= POPUP =================
-diaElemento.addEventListener("click", () => {
 
-  // SE NÃO FOR ADMIN → só visualizar
+// SE NÃO FOR ADMIN → só visualizar
   if (!adminAtivo) {
     abrirVisualizacao(dia);
     return;
