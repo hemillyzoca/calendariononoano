@@ -1,3 +1,4 @@
+alert("JS carregou");
 console.log("JS carregou");
 
 let eventoSelecionadoId = null;
