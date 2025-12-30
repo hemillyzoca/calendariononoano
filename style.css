@@ -381,3 +381,65 @@ h1 {
   }
 
 }
+@media screen and (max-width: 600px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 18px !important;
+    margin: 10px 0 !important;
+  }
+
+  /* área administrativa */
+  .admin-box {
+    padding: 12px !important;
+    margin: 10px auto !important;
+  }
+
+  /* TOPO (mês + flechas) */
+  .topo {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 12px 0 !important;
+  }
+
+  .topo h2,
+  #mes-ano {
+    font-size: 16px !important;
+    margin: 0 !important;
+  }
+
+  .nav-btn {
+    font-size: 18px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* popup */
+  .modal {
+    max-width: 340px !important;
+    padding: 14px !important;
+  }
+
+  #nome-evento {
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+
+  .tipo-btn {
+    font-size: 12px !important;
+    padding: 8px 0 !important;
+  }
+
+  .salvar-evento,
+  .btn-editar,
+  .btn-apagar {
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+}
