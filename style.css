@@ -443,3 +443,76 @@ h1 {
     padding: 10px !important;
   }
 }
+@media screen and (max-width: 600px) {
+
+  /* ===== TEXTO GERAL ===== */
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin: 12px 0;
+  }
+
+  /* ===== ÁREA ADMIN ===== */
+  .admin-box {
+    padding: 12px;
+    max-width: 92%;
+  }
+
+  .admin-box input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .admin-box button {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  /* ===== TOPO (mês + flechas) ===== */
+  .topo {
+    gap: 8px;
+    margin: 10px 0;
+  }
+
+  .topo h2,
+  #mes-ano {
+    font-size: 16px;
+  }
+
+  .nav-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    border-radius: 50%;
+  }
+
+  /* ===== DIAS DA SEMANA ===== */
+  .dias-semana div {
+    font-size: 12px;
+    color: #000;
+    padding: 6px 0;
+  }
+
+  /* ===== GRADE DO CALENDÁRIO ===== */
+  .calendario {
+    gap: 6px;
+  }
+
+  .dia {
+    min-height: 70px;        /* deixa mais quadrado */
+    padding: 6px;
+    border-radius: 14px;
+  }
+
+  .dia span {
+    font-size: 13px;
+  }
+
+  .evento {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+}
